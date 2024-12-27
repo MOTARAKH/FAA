@@ -33,10 +33,6 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
     
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
-    
         .dropdown-menu li a {
             display: block;
             padding: 8px 20px;
@@ -46,6 +42,16 @@
     
         .dropdown-menu li a:hover {
             background: #f4f4f4;
+        }
+    
+        .dropdown.active .dropdown-menu {
+            display: block;
+        }
+        .my-btn{
+            margin-top: 10px;
+            background-color: #1abc9c;
+            color: #f4f4f4;
+            border: none;
         }
     </style>
     <body>
@@ -86,7 +92,7 @@
                             <ul class="nav nav-pills navbar-right">
                                 <li><a href="ourteam.html">Our Team</a></li>
                                 <li class="dropdown">
-                                    <a href="hussein.html">Career</a>
+                                    <button class="my-btn"id="dropdown-toggle">Career</button>
                                     <ul class="dropdown-menu">
                                         <li><a href="hussein.html">Hussein Fadel</a></li>
                                         <li><a href="mohamad.html">Mohamad Fadel</a></li>
@@ -101,7 +107,6 @@
                 </div>
             </div>
         </section>
-
         <header class="header-section">
             <nav class="navbar navbar-default">
                 <div class="container">
@@ -236,5 +241,22 @@
         <script src="js/owl.carousel.min.js"></script>
         <script src="js/wow.min.js"></script>
         <script src="js/custom.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const dropdown = document.querySelector('.dropdown');
+                const toggle = document.getElementById('dropdown-toggle');
+    
+                toggle.addEventListener('click', () => {
+                    dropdown.classList.toggle('active');
+                });
+    
+                // Optional: Close the menu when clicking outside
+                document.addEventListener('click', (event) => {
+                    if (!dropdown.contains(event.target)) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
