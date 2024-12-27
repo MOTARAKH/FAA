@@ -21,7 +21,43 @@
         }
     </style>
 </head>
+<style>
+    .dropdown {
+        position: relative;
+    }
 
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #0edfb2;
+        padding: 10px 0;
+        list-style: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .dropdown-menu li a {
+        display: block;
+        padding: 8px 20px;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .dropdown-menu li a:hover {
+        background: #f4f4f4;
+    }
+
+    .dropdown.active .dropdown-menu {
+        display: block;
+    }
+    .my-btn{
+        margin-top: 10px;
+        background-color: #1abc9c;
+        color: #f4f4f4;
+        border: none;
+    }
+</style>
 <body>
 
     <!-- PRELOADER -->
@@ -40,16 +76,33 @@
                 <div class="col-md-6">
                     <div class="header-top-content">
                         <ul class="nav nav-pills navbar-left">
-                            <li><a href="#"><i class="pe-7s-call"></i><span>+961 3 934 774</span></a></li>
-                            <li><a href="#"><i class="pe-7s-mail"></i><span> info@ffa.com</span></a></li>
+                            <li>
+                                <a href="https://wa.me/9613934774" target="_blank">
+                                    <i class="pe-7s-call"></i>
+                                    <span>+961 3 934 774</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:info@ffa.com">
+                                    <i class="pe-7s-mail"></i>
+                                    <span>info@ffa.com</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="header-top-menu">
                         <ul class="nav nav-pills navbar-right">
-                            <li><a href="#">Our Team</a></li>
-                            <li><a href="#">Career</a></li>
+                            <li><a href="ourteam.html">Our Team</a></li>
+                            <li class="dropdown">
+                                <button class="my-btn"id="dropdown-toggle">Career</button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="hussein.html">Hussein Fadel</a></li>
+                                    <li><a href="mohamad.html">Mohamad Fadel</a></li>
+                                </ul>
+                            </li>
+
                             <li><a href="links.html">Useful Links</a></li>
 
                         </ul>
@@ -77,9 +130,8 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li class=""><a href="#">About Us</a></li>
-
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li class=""><a href="index.html#about">About Us</a></li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Our Services<span
                                     class="caret"></span></a>
@@ -91,17 +143,16 @@
                                 <li><a href="training.html">TRAINING & CAPABILITIES BUILDING</a></li>
                                 <li><a href="tax.html">TAX SERVICES</a></li>
                             </ul>
-                        <li><a href="#"> Industries </a></li>
-                        <li><a href="#"> Insights </a></li>
-                        <li><a href="#"> News Room</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="index.html#network"> Industries </a></li>
+                        <li><a href="index.html#newsletter"> Insights </a></li>
+                        <li><a href="index.html#news"> News Room</a></li>
+                        <li><a href="index.html#contact">Contact Us</a></li>
                     </ul>
 
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container -->
         </nav>
     </header>
-
     <section class="search-section">
         <div class="container">
             <div class="row subscribe-from">
@@ -197,6 +248,23 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/wow.min.js"></script>
     <script src="js/custom.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdown = document.querySelector('.dropdown');
+            const toggle = document.getElementById('dropdown-toggle');
+
+            toggle.addEventListener('click', () => {
+                dropdown.classList.toggle('active');
+            });
+
+            // Optional: Close the menu when clicking outside
+            document.addEventListener('click', (event) => {
+                if (!dropdown.contains(event.target)) {
+                    dropdown.classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
